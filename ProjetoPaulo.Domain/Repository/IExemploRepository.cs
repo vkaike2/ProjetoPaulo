@@ -7,5 +7,6 @@ namespace ProjetoPaulo.Domain.Repository
 {
     public interface IExemploRepository : IRepositoryBase<Exemplo>
     {
+        Task<ICollection<Exemplo>> ListaComPaginacaoEFiltro(string descricaoFiltro, int? skip, int? take);
     }
 }

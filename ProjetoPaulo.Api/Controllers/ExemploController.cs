@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Http;
@@ -21,18 +22,42 @@ namespace ProjetoPaulo.Api.Controllers
         }
 
         [HttpGet]
-        public async Task<IActionResult> ListarExemplos()
+        public async Task<IActionResult> ListarExemplos(string descricaoFiltro, int? skip, int? take)
         {
-            return Ok();
+            try
+            {
+                ICollection<Exemplo> listaExemplo = await _exemploService.BuscarExemplos(descricaoFiltro,skip,take);
+                return Ok(listaExemplo);
+            }
+            catch (Exception ex)
+            {
+                return BadRequest(ex.Message);
+            }
         }
+
+        [HttpGet]
+        [Route("getPorId/{id}")]
+        public async Task<IActionResult> BuscarPorId(Guid id)
+        {
+            try
+            {
+                Exemplo exemplo = await _exemploService.BuscarExemploPorId(id);
+                return Ok(exemplo);
+            }
+            catch (Exception ex)
+            {
+                return BadRequest(ex.Message);
+            }
+        }
+
 
         [HttpPost]
         public async Task<IActionResult> CadastrarExemplos([FromBody] Exemplo exemplo)
         {
             try
             {
-                await _exemploService.Cadastrar(exemplo);
-                return Ok();
+                Exemplo exemploCadastrado = await _exemploService.Cadastrar(exemplo);
+                return Ok(exemploCadastrado);
             }
             catch (Exception ex)
             {
@@ -41,15 +66,31 @@ namespace ProjetoPaulo.Api.Controllers
         }
 
         [HttpPut]
-        public async Task<IActionResult> AlterarExemplo()
+        public async Task<IActionResult> AlterarExemplo([FromBody] Exemplo exemplo)
         {
-            return Ok();
+            try
+            {
+                Exemplo exemploAtualizado = await _exemploService.Alterar(exemplo);
+                return Ok(exemploAtualizado);
+            }
+            catch (Exception ex)
+            {
+                return BadRequest(ex.Message);
+            }
         }
 
         [HttpDelete]
-        public async Task<IActionResult> DeletarExemplo()
+        public async Task<IActionResult> DeletarExemplo([FromBody] Exemplo exemplo)
         {
-            return Ok();
+            try
+            {
+                await _exemploService.Deletar(exemplo);
+                return Ok("Exemplo deletado com sucesso");
+            }
+            catch (Exception ex)
+            {
+                return BadRequest(ex.Message);
+            }
         }
     }
 }
