@@ -4,7 +4,7 @@ using System.Text;
 using System.Threading.Tasks;
 using ProjetoPaulo.Domain.Model;
 
-namespace ProjetoPaulo.Service.Interface
+namespace ProjetoPaulo.Domain.Service
 {
     public interface IExemploService
     {

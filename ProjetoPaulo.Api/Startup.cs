@@ -1,7 +1,5 @@
 ﻿using System;
 using System.Reflection;
-using System.Text;
-using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Mvc;
@@ -9,12 +7,11 @@ using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Diagnostics;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
-using Microsoft.IdentityModel.Tokens;
 using ProjetoPaulo.Data.Context;
 using ProjetoPaulo.Data.Repository;
 using ProjetoPaulo.Domain.Config;
 using ProjetoPaulo.Domain.Repository;
-using ProjetoPaulo.Service.Interface;
+using ProjetoPaulo.Domain.Service;
 using ProjetoPaulo.Service.Service;
 
 namespace ProjetoPaulo.Api

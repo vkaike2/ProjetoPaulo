@@ -1,9 +1,8 @@
 ﻿using ProjetoPaulo.Domain.Model;
 using ProjetoPaulo.Domain.Repository;
-using ProjetoPaulo.Service.Interface;
+using ProjetoPaulo.Domain.Service;
 using System;
 using System.Collections.Generic;
-using System.Text;
 using System.Threading.Tasks;
 
 namespace ProjetoPaulo.Service.Service

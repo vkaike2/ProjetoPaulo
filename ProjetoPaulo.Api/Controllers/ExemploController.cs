@@ -1,12 +1,9 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.IO;
-using System.Linq;
 using System.Threading.Tasks;
-using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using ProjetoPaulo.Domain.Model;
-using ProjetoPaulo.Service.Interface;
+using ProjetoPaulo.Domain.Service;
 
 namespace ProjetoPaulo.Api.Controllers
 {

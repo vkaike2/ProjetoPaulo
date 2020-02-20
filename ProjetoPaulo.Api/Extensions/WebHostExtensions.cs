@@ -14,11 +14,11 @@ namespace WebAppRodarForce.Api.Extensions
         {
             using (var scope = webHost.Services.CreateScope())
             {
-                var services = scope.ServiceProvider;
+                IServiceProvider services = scope.ServiceProvider;
 
-                var logger = services.GetRequiredService<ILogger<TContext>>();
+                ILogger<TContext> logger = services.GetRequiredService<ILogger<TContext>>();
 
-                var context = services.GetService<TContext>();
+                TContext context = services.GetService<TContext>();
 
                 try
                 {
